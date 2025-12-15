@@ -44,6 +44,10 @@ Route::bind('parameter', function ($value) {
     return \App\Models\SystemParameter::where('ParameterID', $value)->firstOrFail();
 });
 
+Route::bind('system_parameter', function ($value) {
+    return \App\Models\SystemParameter::where('ParameterID', $value)->firstOrFail();
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
