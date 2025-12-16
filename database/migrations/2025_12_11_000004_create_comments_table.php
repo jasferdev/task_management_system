@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id('CommentID');
-            $table->foreignId('TaskID')
-                ->constrained('tasks', 'TaskID')
+            $table->unsignedBigInteger('TaskID');
+            $table->foreign('TaskID')
+                ->references('TaskID')
+                ->on('tasks')
                 ->onDelete('cascade');
-            $table->foreignId('UserID')
-                ->constrained('users', 'UserID')
+            $table->unsignedBigInteger('UserID');
+            $table->foreign('UserID')
+                ->references('UserID')
+                ->on('users')
                 ->onDelete('cascade');
             $table->text('CommentText');
             $table->timestamp('DatePosted');

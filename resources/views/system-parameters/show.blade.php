@@ -35,11 +35,11 @@
             </div>
             <div class="bg-green-50 p-4 rounded-lg border border-green-200">
                 <p class="text-gray-600 text-sm">Created</p>
-                <p class="text-sm font-semibold">{{ $parameter->created_at->format('M d, Y H:i') }}</p>
+                <p class="text-sm font-semibold">{{ $parameter->created_at ? $parameter->created_at->format('M d, Y H:i') : 'N/A' }}</p>
             </div>
             <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
                 <p class="text-gray-600 text-sm">Last Updated</p>
-                <p class="text-sm font-semibold">{{ $parameter->updated_at->format('M d, Y H:i') }}</p>
+                <p class="text-sm font-semibold">{{ $parameter->updated_at ? $parameter->updated_at->format('M d, Y H:i') : 'N/A' }}</p>
             </div>
         </div>
 

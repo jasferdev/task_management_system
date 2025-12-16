@@ -18,15 +18,20 @@ return new class extends Migration
             $table->string('Priority')->default('medium');
             $table->string('Status')->default('pending');
             $table->dateTime('Deadline')->nullable();
-            $table->foreignId('CreatedBy')
-                ->constrained('users', 'UserID')
+            $table->unsignedBigInteger('CreatedBy');
+            $table->foreign('CreatedBy')
+                ->references('UserID')
+                ->on('users')
                 ->onDelete('cascade');
-            $table->foreignId('AssignedTo')
-                ->constrained('users', 'UserID')
-                ->onDelete('set null')
-                ->nullable();
-            $table->foreignId('DepartmentID')
-                ->constrained('departments', 'DepartmentID')
+            $table->unsignedBigInteger('AssignedTo')->nullable();
+            $table->foreign('AssignedTo')
+                ->references('UserID')
+                ->on('users')
+                ->onDelete('set null');
+            $table->unsignedBigInteger('DepartmentID');
+            $table->foreign('DepartmentID')
+                ->references('DepartmentID')
+                ->on('departments')
                 ->onDelete('cascade');
             $table->timestamps();
         });

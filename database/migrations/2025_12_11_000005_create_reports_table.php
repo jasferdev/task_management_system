@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id('ReportID');
             $table->string('Title');
-            $table->foreignId('CreatedBy')
-                ->constrained('users', 'UserID')
+            $table->unsignedBigInteger('CreatedBy');
+            $table->foreign('CreatedBy')
+                ->references('UserID')
+                ->on('users')
                 ->onDelete('cascade');
             $table->timestamp('DateGenerated');
             $table->timestamps();

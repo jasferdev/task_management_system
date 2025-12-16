@@ -69,8 +69,8 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-gray-600 text-sm">Created By</p>
-                <p class="text-sm font-semibold">{{ $task->creator->Name }}</p>
-                <p class="text-xs text-gray-500">{{ $task->created_at->format('M d, Y H:i') }}</p>
+                <p class="text-sm font-semibold">{{ $task->creator?->Name ?? 'Unknown' }}</p>
+                <p class="text-xs text-gray-500">{{ $task->created_at ? $task->created_at->format('M d, Y H:i') : 'N/A' }}</p>
             </div>
             <div class="bg-gray-50 p-4 rounded-lg">
                 <p class="text-gray-600 text-sm">Assigned To</p>
@@ -114,8 +114,8 @@
                 @foreach($task->comments as $comment)
                     <div class="border border-gray-200 rounded-lg p-4">
                         <div class="flex justify-between items-start mb-2">
-                            <h5 class="font-semibold text-gray-800">{{ $comment->user->Name }}</h5>
-                            <span class="text-xs text-gray-500">{{ $comment->DatePosted->format('M d, Y H:i') }}</span>
+                            <h5 class="font-semibold text-gray-800">{{ $comment->user?->Name ?? 'Unknown User' }}</h5>
+                            <span class="text-xs text-gray-500">{{ $comment->DatePosted ? $comment->DatePosted->format('M d, Y H:i') : 'N/A' }}</span>
                         </div>
                         <p class="text-gray-700">{{ $comment->CommentText }}</p>
                     </div>

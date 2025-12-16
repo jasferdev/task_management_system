@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('Email')->unique();
             $table->string('Role');
             $table->string('Status')->default('active');
-            $table->foreignId('DepartmentID')
-                ->constrained('departments', 'DepartmentID')
+            $table->unsignedBigInteger('DepartmentID');
+            $table->foreign('DepartmentID')
+                ->references('DepartmentID')
+                ->on('departments')
                 ->onDelete('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

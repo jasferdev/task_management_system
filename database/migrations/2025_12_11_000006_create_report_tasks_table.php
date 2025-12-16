@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('report_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ReportID')
-                ->constrained('reports', 'ReportID')
+            $table->unsignedBigInteger('ReportID');
+            $table->foreign('ReportID')
+                ->references('ReportID')
+                ->on('reports')
                 ->onDelete('cascade');
-            $table->foreignId('TaskID')
-                ->constrained('tasks', 'TaskID')
+            $table->unsignedBigInteger('TaskID');
+            $table->foreign('TaskID')
+                ->references('TaskID')
+                ->on('tasks')
                 ->onDelete('cascade');
             $table->timestamps();
         });

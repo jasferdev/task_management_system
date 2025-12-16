@@ -31,11 +31,11 @@
         <div class="grid grid-cols-3 gap-4">
             <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
                 <p class="text-gray-600 text-sm">Created By</p>
-                <p class="text-sm font-semibold">{{ $report->creator->Name }}</p>
+                <p class="text-sm font-semibold">{{ $report->creator?->Name ?? 'Unknown' }}</p>
             </div>
             <div class="bg-green-50 p-4 rounded-lg border border-green-200">
                 <p class="text-gray-600 text-sm">Date Generated</p>
-                <p class="text-sm font-semibold">{{ $report->DateGenerated->format('M d, Y H:i') }}</p>
+                <p class="text-sm font-semibold">{{ $report->DateGenerated ? $report->DateGenerated->format('M d, Y H:i') : 'N/A' }}</p>
             </div>
             <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
                 <p class="text-gray-600 text-sm">Tasks Included</p>

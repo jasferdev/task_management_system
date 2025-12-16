@@ -41,7 +41,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-600">
-                        {{ $parameter->updated_at->format('M d, Y H:i') }}
+                        {{ $parameter->updated_at ? $parameter->updated_at->format('M d, Y H:i') : 'N/A' }}
                     </td>
                     <td class="px-6 py-4 text-center">
                         <div class="flex justify-center gap-2">
